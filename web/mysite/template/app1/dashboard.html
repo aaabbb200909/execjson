@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+<style>
+ b {
+  background-color: #aea;
+ }
+</style>
+
+</head>
+<body>
+
+<b>[サマリー]</b>
+
+<ul>
+{% for jsonpair in jsonpairs %}
+ <li>
+  <a href="#{{ jsonpair.jsonlogname }}"><b>{{ jsonpair.jsonfilename }}</b></a>
+ </li>
+ {{jsonpair.jsonsummary}}
+{% endfor %}
+</ul>
+
+<b>[詳細欄]</b>
+
+{% for jsonpair in jsonpairs %}
+<ul>
+ <li>
+  <a href="../../execjson/{{jobapplcode}}/{{ jsonpair.jsonlogname }}"><b id="{{jsonpair.jsonlogname}}" >{{ jsonpair.jsonfilename }}</b></a>
+ </li>
+ <pre>{{ jsonpair.jsonbody }}</pre>
+</ul>
+{% endfor %}
+</body>
+</html>
