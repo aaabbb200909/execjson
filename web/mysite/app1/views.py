@@ -2,6 +2,7 @@
 # Create your views here.
 from django.http import HttpResponse
 from django.shortcuts import render_to_response,render, redirect
+from django.views.decorators.csrf import csrf_protect
 import json, re, time, os
 
 testjsondir='/var/tmp/execjson/tmp/jsondir/'
@@ -9,6 +10,7 @@ testjsondir='/var/tmp/execjson/tmp/jsondir/'
 operationswithseveralops=['mkdir','filetransfer','editcron','editat', 
  'modifyuseros', 'passwdresetos', 'deletefile', "modifydns"
 ]
+
 
 opsusers=['aaabbb_200909']
 applusers=[]
@@ -24,6 +26,7 @@ def get_authorization(request):
    return 'appluser'
  return 'normaluser'
 
+
 class jsonpair():
  def __init__(s, jsonfilename, jsonbody, jsonsummary):
   s.jsonfilename=jsonfilename
@@ -31,6 +34,8 @@ class jsonpair():
   s.jsonlogname=os.path.basename(jsonfilename+'.txt')
   s.jsonsummary=jsonsummary
 
+
+@csrf_protect
 def dashboard(request):
  role=get_authorization(request)
  if (role != 'opsuser'):
@@ -53,6 +58,7 @@ def dashboard(request):
   jsonpairs+=[jsonpair(jsonfilename, json.dumps(js, indent=4), repr(jsonsummary))]
  return render(request, 'app1/dashboard.html', {"jsonsummaries": jsonsummaries, "jsonpairs":jsonpairs})
 
+
 def createmultiopjs():
  multiopjs= 'var multioplist={'
  for op in operationswithseveralops:
@@ -61,6 +67,8 @@ def createmultiopjs():
  multiopjs+='};'
  return multiopjs
 
+
+@csrf_protect
 def index(request):
     role=get_authorization(request)
     joblist=[]
@@ -127,7 +135,8 @@ def consumeoperationargs(jobname, duprp):
  elif (jobname=="sleepandexception"):
   return consume(duprp, ["sleep", "exception"])
 
-##
+
+@csrf_protect
 def load(request):
     rp=request.POST
     loadjson=request.FILES["putjson"].read() # hmm..
@@ -137,6 +146,7 @@ def load(request):
     return redirect(index)
 
 
+@csrf_protect
 def clearcache(request):
     # GET allows easy SessionReset ..
     if  ('dictforjs' in request.session):
@@ -144,6 +154,8 @@ def clearcache(request):
      del request.session['dictforjs']
     return redirect(index)
 
+
+@csrf_protect
 def createjson(request):
     role=get_authorization(request)
     rp=request.POST
@@ -227,4 +239,19 @@ def createjson(request):
      return redirect(index)
     else:
      return HttpResponse("ViewError: NoSuchActionDefined")
+
+
+def postjson(request):
+    # web service json upload
+    # for this view, I can't use csrf middleware ..
+    role=get_authorization(request)
+    currenttime=time.strftime("%Y%m%d-%H%M%S",time.localtime())
+    rp=request.POST
+    loadjson=request.FILES["putjson"].read() # hmm..
+    dictforjs=json.loads(loadjson)
+    if (role == "opsuser"):
+      tmp=json.dumps(dictforjs, sort_keys=True, indent=4)
+      with open(testjsondir+currenttime+".json", "w") as f:
+       f.write(tmp)
+      return HttpResponse(tmp)
 

@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     url(r'^app1/$', 'app1.views.index'),
     url(r'^app1/createjson$', 'app1.views.createjson'),
     url(r'^app1/load$', 'app1.views.load'),
+    url(r'^app1/postjson$', 'app1.views.postjson'),
     url(r'^app1/clearcache$', 'app1.views.clearcache'),
     url(r'^app1/dashboard$', 'app1.views.dashboard')
 
