@@ -1,15 +1,30 @@
 # execjson
 Service Request should be written in JSON
 
-[Getting Started]
-http://d.hatena.ne.jp/aaabbb_200904/20150430/1430398428
+#Getting Started
 
-[Install]
-事前にdjango インストールが必要
-※ centos7, django1.6(EPEL)で動作確認済み。
+When you receive Service Request from your customer, I expect most often you receive e-mail (free format) or Excel/Word form, especially, when you need an approver for your request on your own Request Handling system, such as IBM Notes or Sharepoint.
 
-1. /var/tmp 以下に展開
-2. $ cd /var/tmp/execjson/web/mysite
-3. $./manage.py syncdb  (セッションDBを作成)
-4. $./manage.py runserver (HTTPサーバー起動)
-5. $ cd /var/tmp/execjson/web/mysite/batch/ && ./do.sh  (ジョブ実行が開始される, fabricが必要)
+Unfortunately, both of e-mail and Excel/Word is not easy to parse compared to Web form, though it is necessary to use file format to go through Request Handling system.
+
+To overcome this constraint, execjson will create JSON from Web form, which could go through your approver, and also will be imported to your Web form again.
+
+It is also able to dispatch successive or parallel job, based on your JSON.
+
+
+#Install
+
+You need to setup Django to install execjson.
+- prefered setting: Centos7, Django1.6(EPEL)
+
+- Currently, I haven't yet updated to Django 1.10
+
+    $ cd /var/tmp && git clone git@github.com:aaabbb200909/execjson.git
+    $ cd /var/tmp/execjson/web/mysite
+    $ ./manage.py syncdb (Create SessionDB)
+    $ ./manage.py runserver (Start WebServer)
+    $ cd /var/tmp/execjson/web/mysite/batch/ && ./do.sh (Start job dispatcher)
+
+
+[Reference]
+http://aaabbb-200904.hatenablog.jp/archive/category/execjson
