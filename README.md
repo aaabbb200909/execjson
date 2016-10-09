@@ -24,8 +24,13 @@ You need to setup Django to install execjson.
     $ cd /var/tmp/execjson/web/mysite
     $ ./manage.py syncdb (Create SessionDB)
     $ ./manage.py runserver (Start WebServer)
+then access this url:
+http://localhost:8000/app1/
     $ cd /var/tmp/execjson/web/mysite/batch/ && ./do.sh (Start job dispatcher)
 ~~~~
+
+#Usage
+https://github.com/aaabbb200909/execjson/wiki
 
 #Reference
 author's blog (written in Japanese)
