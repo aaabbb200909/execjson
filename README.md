@@ -3,7 +3,7 @@ Service Request should be written in JSON
 
 #Getting Started
 
-When you receive Service Request from your customer, I expect most often you receive e-mail (free format) or Excel/Word form, especially, when you need an approver for your request on your own Request Handling system, such as IBM Notes or Sharepoint.
+When you receive Service Request from your customer, I expect most often you receive e-mail (free format) or Excel/Word form, especially, when you need an approver for your request on your own Request Handling system, such as OTRS.
 
 Unfortunately, both of e-mail and Excel/Word is not easy to parse compared to web form.
 
