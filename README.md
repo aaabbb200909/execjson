@@ -23,6 +23,7 @@ You need to setup Django to install execjson.
     $ cd /var/tmp && git clone git@github.com:aaabbb200909/execjson.git
     $ cd /var/tmp/execjson/web/mysite
     $ ./manage.py syncdb (Create SessionDB)
+    $ ./manage.py compilemessages (Create Translation)
     $ ./manage.py runserver (Start WebServer)
 then access this url:
 http://localhost:8000/app1/
