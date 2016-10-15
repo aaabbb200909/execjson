@@ -3,6 +3,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render_to_response,render, redirect
 from django.views.decorators.csrf import csrf_protect
+from django.utils.translation import ugettext as _
 import json, re, time, os
 
 testjsondir='/var/tmp/execjson/tmp/jsondir/'
@@ -166,7 +167,7 @@ def createjson(request):
     for id in ids:
      tmp=re.match(r"\d+", id)
      if (tmp == None):
-      return HttpResponse(u"IDに数字以外の値が使用されています:"+repr(id))
+      return HttpResponse(_("non numeric caracter is used in an ID: ")+repr(id))
     jobtimes=rp.getlist('time')
     for jobtime in jobtimes:
      if (jobtime == ""):
@@ -174,12 +175,12 @@ def createjson(request):
      try:
       time.strptime(jobtime, "%Y/%m/%d %H:%M")
      except ValueError as e:
-      return HttpResponse(u"時刻のフォーマットが異なります:"+repr(jobtime))
+      return HttpResponse(_("incorrect time format:")+repr(jobtime))
     iffails=rp.getlist('iffail')
     for iffail in iffails:
      tmp=re.match(r"[\d,]+\d", iffail)
      if (not iffail in ('stop', 'go') and tmp == None):
-      return HttpResponse(u"失敗時の動作にstop/go, 及び実行するID以外の値が指定されています:"+repr(iffail))
+      return HttpResponse(_("iffail contailns invalid value: stop/go, or ID cound be used:")+repr(iffail))
     operations=rp.getlist('name')
 
     import itertools
@@ -198,7 +199,7 @@ def createjson(request):
 
     #print ids, names
     if(not len(ids) == len(names)):
-     return HttpResponse("Jobの数とOperationの数が一致しません。")
+     return HttpResponse(_("number of Job and number of Operation is different"))
 
     # Begin consume:
     jobenvcode=rp.getlist('jobenvcode')[0]

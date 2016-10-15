@@ -1,0 +1,42 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-10-15 02:01-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: app1/views.py:170
+msgid "non numeric caracter is used in an ID: "
+msgstr "IDに数字以外の値が使用されています:"
+
+#: app1/views.py:178
+msgid "incorrect time format:"
+msgstr "時刻のフォーマットが異なります:"
+
+#: app1/views.py:183
+msgid "iffail contailns invalid value: stop/go, or ID cound be used:"
+msgstr "失敗時の動作にstop/go, 及び実行するID以外の値が指定されています:"
+
+#: app1/views.py:202
+msgid "number of Job and number of Operation is different"
+msgstr "Jobの数とOperationの数が一致しません。"
+
+#: template/app1/index.html:42
+msgid "time"
+msgstr ""
+
+#: template/app1/index.html:43
+msgid "iffail"
+msgstr ""
