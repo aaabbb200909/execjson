@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+{% load i18n %}
 <head>
 	<meta charset="UTF-8">
 	<title></title>
@@ -38,54 +39,54 @@
 <div id="jobtemplate" style="display:none">
 <div class="job">
 <b class="jobnumber"></b>id: <input type="text" name="id">
-実施時刻: <input type="text" name="time">
-エラー時の対応: <input type="text" name="iffail">
+{% trans "time" %}: <input type="text" name="time">
+{% trans "iffail" %}: <input type="text" name="iffail">
 </div>
 </div>
 
 
 <div id="mkdirtemplate" style="display:none">
 <div class="operation">
-ディレクトリ作成:<b class="mkdirstart">[+]</b><input type="text" name="name" value="mkdir" style="display:none">
-サーバー:<input type="text" name="server">
-パス:<input type="text" name="path">
-オーナー:<input type="text" name="owner">
-グループ:<input type="text" name="group">
-権限:<input type="text" name="mode">
+{% trans "mkdir" %}:<b class="mkdirstart">[+]</b><input type="text" name="name" value="mkdir" style="display:none">
+{% trans "server" %}:<input type="text" name="server">
+{% trans "path" %}:<input type="text" name="path">
+{% trans "owner" %}:<input type="text" name="owner">
+{% trans "group" %}:<input type="text" name="group">
+{% trans "mode" %}:<input type="text" name="mode">
 </div>
 </div>
 
 
 <div id="filetransfertemplate" style="display:none">
 <div class="operation">
-ファイル転送:<b class=filetransferstart>[+]</b><input type="text" name="name" value="filetransfer" style="display:none">
-転送元サーバー:<input type="text" name="srcserver">
-転送元ファイル:<input type="text" name="srcpath">
-転送先サーバー:<input type="text" name="dstserver">
-転送先ファイル:<input type="text" name="dstpath">
-オーナー:<input type="text" name="owner">
-グループ:<input type="text" name="group">
-権限:<input type="text" name="mode">
+{% trans "filetransfer" %}:<b class=filetransferstart>[+]</b><input type="text" name="name" value="filetransfer" style="display:none">
+{% trans "srcserver" %}:<input type="text" name="srcserver">
+{% trans "srcpath" %}:<input type="text" name="srcpath">
+{% trans "dstserver" %}:<input type="text" name="dstserver">
+{% trans "dstpath" %}:<input type="text" name="dstpath">
+{% trans "owner" %}:<input type="text" name="owner">
+{% trans "group" %}:<input type="text" name="group">
+{% trans "mode" %}:<input type="text" name="mode">
 </div>
 </div>
 
 
 <div id="deletefiletemplate" style="display:none">
 <div class="operation">
-ファイル削除:<b class=deletefilestart>[+]</b><input type="text" name="name" value="deletefile" style="display:none">
-サーバー:<input type="text" name="server">
-ファイルパス:<input type="text" name="filepath">
+{% trans "deletefile" %}:<b class=deletefilestart>[+]</b><input type="text" name="name" value="deletefile" style="display:none">
+{% trans "server" %}:<input type="text" name="server">
+{% trans "filepath" %}:<input type="text" name="filepath">
 </div>
 </div>
 
 
 <div id="execshelltemplate" style="display:none">
 <div class="operation">
-シェル実行:<input type="text" name="name" value="execshell" style="display:none">
-サーバー:<input type="text" name="server">
-実行シェル:<input type="text" name="path">
-実行ユーザー:<input type="text" name="user">
-バックグラウンド実行:
+{% trans "execshell" %}:<input type="text" name="name" value="execshell" style="display:none">
+{% trans "server" %}:<input type="text" name="server">
+{% trans "path" %}:<input type="text" name="path">
+{% trans "user" %}:<input type="text" name="user">
+{% trans "background" %}:
 <select name="background">
 <option value="yes">yes</option>
 <option value="no">no</option>
@@ -95,93 +96,89 @@
 
 <div id="editcrontemplate" style="display:none">
 <div class="operation">
-cron登録削除:<b class=editcronstart>[+]</b><input type="text" name="name" value="editcron" style="display:none">
-作業種別:
+{% trans "editcron" %}:<b class=editcronstart>[+]</b><input type="text" name="name" value="editcron" style="display:none">
+{% trans "operation" %}:
 <select name="operation">
-<option value="add">add</option>
-<option value="del">del</option>
+<option value="add">{% trans "add" %}</option>
+<option value="del">{% trans "del" %}</option>
 </select>
-サーバー:<input type="text" name="server">
-ユーザー:<input type="text" name="user">
-分:<input type="text" name="minute">
-時:<input type="text" name="hour">
-日:<input type="text" name="day">
-月:<input type="text" name="month">
-曜日:<input type="text" name="dayofweek">
-コマンド:<input type="text" name="command">
+{% trans "server" %}:<input type="text" name="server">
+{% trans "user" %}:<input type="text" name="user">
+{% trans "minute" %}:<input type="text" name="minute">
+{% trans "hour" %}:<input type="text" name="hour">
+{% trans "day" %}:<input type="text" name="day">
+{% trans "month" %}:<input type="text" name="month">
+{% trans "dayofweek" %}:<input type="text" name="dayofweek">
+{% trans "command" %}:<input type="text" name="command">
 </div>
 </div>
 
 <div id="editattemplate" style="display:none">
 <div class="operation">
-at編集:<b class=editatstart>[+]</b><input type="text" name="name" value="editat" style="display:none">
-作業種別:
+{% trans "editat" %}:<b class=editatstart>[+]</b><input type="text" name="name" value="editat" style="display:none">
+{% trans "oparation" %}:
 <select name="operation">
-<option value="add">add</option>
-<option value="del">del</option>
+<option value="add">{% trans "add" %}</option>
+<option value="del">{% trans "del" %}</option>
 </select>
-サーバー:<input type="text" name="server">
-実行ユーザー:<input type="text" name="user">
-分:<input type="text" name="minute">
-時:<input type="text" name="hour">
-日:<input type="text" name="day">
-月:<input type="text" name="month">
-年:<input type="text" name="year">
-コマンド:<input type="text" name="command">
+{% trans "server" %}:<input type="text" name="server">
+{% trans "user" %}:<input type="text" name="user">
+{% trans "minute" %}:<input type="text" name="minute">
+{% trans "hour" %}:<input type="text" name="hour">
+{% trans "day" %}:<input type="text" name="day">
+{% trans "month" %}:<input type="text" name="month">
+{% trans "year" %}:<input type="text" name="year">
+{% trans "command" %}:<input type="text" name="command">
 </div>
 </div>
 
 
 <div id="mountnfstemplate" style="display:none">
 <div class="operation">
-NFSマウント・アンマウント:<input type="text" name="name" value="mountnfs" style="display:none">
-作業種別:
+{% trans "mountnfs" %}:<input type="text" name="name" value="mountnfs" style="display:none">
+{% trans "operation" %}:
 <select name="operation">
-<option value="add">追加</option>
-<option value="del">削除</option>
+<option value="add">{% trans "add" %}</option>
+<option value="del">{% trans "del" %}</option>
 </select>
-動的マウント<select name="useautomount">
-<option value="no">使用しない</option>
-<option value="yes">使用する</option>
-</select>
-サーバー名:<input type="text" name="servername">
-マウントポイント:<input type="text" name="mountpoint">
-マウントオプション:<input type="text" name="mountoption">
-NFSサーバー名:<input type="text" name="nfsserver">
-エクスポートパス:<input type="text" name="exportpath">
+{% trans "servername" %}:<input type="text" name="servername">
+{% trans "mountpoint" %}:<input type="text" name="mountpoint">
+{% trans "mountoption" %}:<input type="text" name="mountoption">
+{% trans "nfsserver" %}:<input type="text" name="nfsserver">
+{% trans "exportpath" %}:<input type="text" name="exportpath">
 </div>
 </div>
 
 
 <div id="execsqltemplate" style="display:none">
 <div class="operation">
-SQL実行:<input type="text" name="name" value="execsql" style="display:none">
-DB名:<input type="text" name="dbname">
-SQLファイル名:<input type="text" name="filename">
+{% trans "execsql" %}:<input type="text" name="name" value="execsql" style="display:none">
+{% trans "dbname" %}:<input type="text" name="dbname">
+{% trans "filename" %}:<input type="text" name="filename">
 </div>
 </div>
 
 <div id="modifyuserostemplate" style="display:none">
 <div class="operation">
-ユーザー作成(OS):<b class=modifyuserosstart>[+]</b><input type="text" name="name" value="modifyuseros" style="display:none">
-作業種別:
+{% trans "modifyuseros" %}:<b class=modifyuserosstart>[+]</b><input type="text" name="name" value="modifyuseros" style="display:none">
+{% trans "operation" %}:
 <select name="operation">
-<option value="add">add</option>
-<option value="del">del</option>
+<option value="add">{% trans "add" %}</option>
+<option value="del">{% trans "del" %}</option>
 </select>
-サーバー:<input type="text" name="server">
-ユーザー名:<input type="text" name="username">
-名前:<input type="text" name="firstname">
-苗字:<input type="text" name="lastname">
-所属グループ:<input type="text" name="groups">
+{% trans "server" %}:<input type="text" name="server">
+{% trans "username" %}:<input type="text" name="username">
+{% trans "firstname" %}:<input type="text" name="firstname">
+{% trans "lastname" %}:<input type="text" name="lastname">
+{% trans "groups" %}:<input type="text" name="groups">
 </div>
 </div>
 
 <div id="passwdresetostemplate" style="display:none">
 <div class="operation">
-パスワードリセット(OS):<b class=passwdresetosstart>[+]</b><input type="text" name="name" value="passwdresetos" style="display:none">
-サーバー:<input type="text" name="server">
-ユーザー名:<input type="text" name="username">
+{% trans "passwdresetos" %}:<b class=passwdresetosstart>[+]</b><input type="text" name="name" value="passwdresetos" style="display:none">
+{% trans "server" %}:<input type="text" name="server">
+{% trans "username" %}:<input type="text" name="username">
 </div>
 </div>
 
@@ -189,21 +186,21 @@ SQLファイル名:<input type="text" name="filename">
 
 <div id="modifydnstemplate" style="display:none">
 <div class="operation">
-DNS登録・削除:<b class=modifydnsstart>[+]</b><input type="text" name="name" value="modifydns" style="display:none">
-作業種別:
+{% trans "modifydns" %}:<b class=modifydnsstart>[+]</b><input type="text" name="name" value="modifydns" style="display:none">
+{% trans "operation" %}:
 <select name="operation">
-<option value="add">追加</option>
-<option value="del">削除</option>
+<option value="add">{% trans "add" %}</option>
+<option value="del">{% trans "del" %}</option>
 </select>
 FQDN:<input type="text" name="fqdn">
-IPアドレス:<input type="text" name="ipaddr">
+{% trans "ipaddr" %}:<input type="text" name="ipaddr">
 </div>
 </div>
 
 <div id="otherstemplate" style="display:none">
 <div class="operation">
-その他の作業:<input type="text" name="name" value="others" style="display:none">
-ファイル名:<input type="text" name="filename">
+{% trans "others" %}:<input type="text" name="name" value="others" style="display:none">
+{% trans "filename" %}:<input type="text" name="filename">
 </div>
 </div>
 
@@ -228,18 +225,18 @@ Exception(yes or no):
 <input type="button" value="addjob" onclick="addjob()">
 operation:<select id="sortofop" name="sortofop" onchange="addjob()">
 <option value="dummy">Operation:</option>
-<option value="mkdir"> ディレクトリ作成</option>
-<option value="filetransfer"> ファイル転送</option>
-<option value="deletefile"> ファイル削除</option>
-<option value="execshell"> シェル実行</option>
-<option value="editcron"> cron追加</option>
-<option value="editat"> at追加</option>
-<option value="mountnfs"> NFSマウント/アンマウント</option>
-<option value="execsql"> SQL実行</option>
-<option value="modifyuseros"> ユーザー登録・削除(OS)</option>
-<option value="passwdresetos"> パスワードリセット(OS)</option>
-<option value="modifydns"> DNS登録</option>
-<option value="others">その他の作業</option>
+<option value="mkdir"> {% trans "mkdir" %}</option>
+<option value="filetransfer"> {% trans "filetransfer" %}</option>
+<option value="deletefile"> {% trans "deletefile" %}</option>
+<option value="execshell"> {% trans "execshell" %}</option>
+<option value="editcron"> {% trans "editcron" %}</option>
+<option value="editat"> {% trans "editat" %}</option>
+<option value="mountnfs"> {% trans "mountnfs" %}</option>
+<option value="execsql"> {% trans "execsql" %}</option>
+<option value="modifyuseros"> {% trans "modifyuseros" %}</option>
+<option value="passwdresetos"> {% trans "passwdresetos" %}</option>
+<option value="modifydns"> {% trans "modifydns" %}</option>
+<option value="others">{% trans "others" %}</option>
 <option value="sleepandexception">(testonly)sleep-exception</option>
 </select>
  </li>
@@ -256,12 +253,12 @@ delpos1:<input id="delpos1" type="text" name="delpos1">
 <form method="post" action="createjson" id="jobforms">{% csrf_token %} 
 
 <div id="jobformheader">
-環境:
+{% trans "envcode" %}:
 <select id="jobenvcode" name="jobenvcode">
- <option value="Prod">本番</option>
- <option value="Dev">開発検証</option>
+ <option value="Prod">{% trans "Prod" %}</option>
+ <option value="Dev">{% trans "Dev" %}</option>
 </select>
-システム名:<input id="jobapplcode" type="text" name="jobapplcode">
+{% trans "systemname" %}:<input id="jobapplcode" type="text" name="jobapplcode">
 </div>
 
 <div id="jobformdata">
