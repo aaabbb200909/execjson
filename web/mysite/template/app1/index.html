@@ -197,6 +197,20 @@ FQDN:<input type="text" name="fqdn">
 </div>
 </div>
 
+<div id="addfirewallpolicytemplate" style="display:none">
+<div class="operation">
+{% trans "addfirewallpolicy" %}:<input type="text" name="name" value="addfirewallpolicy" style="display:none">
+{% trans "srcaddress" %}:<input type="text" name="srcaddress">
+{% trans "srcnetmask" %}:<input type="text" name="srcnetmask">
+{% trans "destaddress" %}:<input type="text" name="destaddress">
+{% trans "destnetmask" %}:<input type="text" name="destnetmask">
+{% trans "applicationname" %}:<input type="text" name="applicationname">
+{% trans "policy_then" %}:<input type="text" name="policy_then">
+</div>
+</div>
+
+
+
 <div id="otherstemplate" style="display:none">
 <div class="operation">
 {% trans "others" %}:<input type="text" name="name" value="others" style="display:none">
@@ -236,6 +250,7 @@ operation:<select id="sortofop" name="sortofop" onchange="addjob()">
 <option value="modifyuseros"> {% trans "modifyuseros" %}</option>
 <option value="passwdresetos"> {% trans "passwdresetos" %}</option>
 <option value="modifydns"> {% trans "modifydns" %}</option>
+<option value="addfirewallpolicy"> {% trans "addfirewallpolicy" %}</option>
 <option value="others">{% trans "others" %}</option>
 <option value="sleepandexception">(testonly)sleep-exception</option>
 </select>

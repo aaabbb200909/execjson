@@ -131,6 +131,8 @@ def consumeoperationargs(jobname, duprp):
   return consume(duprp, ["server", "username"])
  elif (jobname=="modifydns"):
   return consume(duprp, ["operation", "fqdn", "ipaddr"])
+ elif (jobname=="addfirewallpolicy"):
+  return consume(duprp, ["srcaddress", "srcnetmask", "destaddress", "destnetmask", "applicationname", "policy_then"])
  elif (jobname=="others"):
   return consume(duprp, ["filename"])
  elif (jobname=="sleepandexception"):
