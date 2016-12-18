@@ -15,14 +15,12 @@ It is also able to dispatch successive or parallel job, based on your JSON.
 #Install
 
 You need to setup Django to install execjson.
-- prefered setting: Centos7, Django1.6(EPEL)
-
-- Currently, I haven't yet updated to Django 1.10
+- prefered setting: Django1.10
 
 ~~~~
     $ cd /var/tmp && git clone git@github.com:aaabbb200909/execjson.git
     $ cd /var/tmp/execjson/web/mysite
-    $ ./manage.py syncdb (Create SessionDB)
+    $ ./manage.py migrate (Create SessionDB)
     $ ./manage.py compilemessages (Create Translation)
     $ ./manage.py runserver (Start WebServer)
 then access this url:
