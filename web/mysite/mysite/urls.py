@@ -1,23 +1,22 @@
-from django.conf.urls import patterns, include, url
+"""mysite URL Configuration
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/1.10/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.conf.urls import url, include
+    2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
+"""
+from django.conf.urls import url, include
+from django.contrib import admin
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'mysite.views.home', name='home'),
-    # url(r'^mysite/', include('mysite.foo.urls')),
-    url(r'^app1/$', 'app1.views.index'),
-    url(r'^app1/createjson$', 'app1.views.createjson'),
-    url(r'^app1/load$', 'app1.views.load'),
-    url(r'^app1/postjson$', 'app1.views.postjson'),
-    url(r'^app1/clearcache$', 'app1.views.clearcache'),
-    url(r'^app1/dashboard$', 'app1.views.dashboard')
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
-)
+urlpatterns = [
+    #url(r'^admin/', admin.site.urls),
+    url(r'^app1/', include('app1.urls')),
+]

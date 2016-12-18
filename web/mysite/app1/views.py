@@ -163,7 +163,7 @@ def createjson(request):
     role=get_authorization(request)
     rp=request.POST
     duprp=rp.copy() # Consume all the tokens with consume_xxx methods
-    #print duprp
+    #print (duprp)
 
     ids=rp.getlist('id')
     for id in ids:
