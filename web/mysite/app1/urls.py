@@ -4,10 +4,10 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
-    url(r'^createjson$', views.index, name='createjson'),
-    url(r'^load$', views.index, name='load'),
-    url(r'^postjson$', views.index, name='postjson'),
-    url(r'^clearcache$', views.index, name='clearcache'),
-    url(r'^dashboard$', views.index, name='dashboard')
+    url(r'^createjson$', views.createjson, name='createjson'),
+    url(r'^load$', views.load, name='load'),
+    url(r'^postjson$', views.postjson, name='postjson'),
+    url(r'^clearcache$', views.clearcache, name='clearcache'),
+    url(r'^dashboard$', views.dashboard, name='dashboard')
 ]
 
