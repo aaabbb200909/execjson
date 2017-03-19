@@ -113,4 +113,14 @@ $(document).ready(function(){
   binddupdeltooperation(op);
  }
 
+ // set jquery file upload
+ $(function () {
+  $('#fileupload').fileupload({
+   dataType: 'text',
+   done: function (e, data) {
+    $('#load_and_reload').prop("value", "reload")
+   }
+  });
+ });
+
 });

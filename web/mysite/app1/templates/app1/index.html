@@ -299,16 +299,6 @@ delpos1:<input id="delpos1" type="text" name="delpos1">
 <input type="submit" value="load" id="load_and_reload" />|drag-and-drop-json-here|
 </form>
 <input id="fileupload" type="file" name="putjson" data-url="load" style="display:none">
-<script>
-$(function () {
- $('#fileupload').fileupload({
-  dataType: 'text',
-  done: function (e, data) {
-   $('#load_and_reload').prop("value", "reload")
-  }
- });
-});
-</script>
 
 <a href="../../execjson">logdir</a>
 {% if role == "opsuser" %}
