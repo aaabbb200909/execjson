@@ -108,8 +108,9 @@ binddupdeltooperation = function(op){
 // jquery event:
 $(document).ready(function(){
 
-for (var op in multioplist){
- binddupdeltooperation(op);
-}
+ // deal with multiop jobs
+ for (var op in multioplist){
+  binddupdeltooperation(op);
+ }
 
 });

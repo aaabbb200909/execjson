@@ -6,6 +6,8 @@
 	<title></title>
 	<script src="../static/jquery-1.10.2.js"></script>
 	<script src="../static/jquery-ui-1.10.4.custom.js"></script>
+	<script src="../static/vendor/jquery.ui.widget.js"></script>
+	<script src="../static/jquery.fileupload.js"></script>
 	<script>
 	$(function() {
 	 $( "#jobformdata" ).sortable();
@@ -293,10 +295,21 @@ delpos1:<input id="delpos1" type="text" name="delpos1">
 <input type="submit" value="clearcache" name="clearcache" />
 </form>
 
-<form method="post" action="load" id="putjson" enctype="multipart/form-data">{% csrf_token %} 
-<input type="submit" value="load" name="load" />
-<input type="file" name="putjson"/>
+<form method="get" action=".">
+<input type="submit" value="load" id="load_and_reload" />|drag-and-drop-json-here|
 </form>
+<input id="fileupload" type="file" name="putjson" data-url="load" style="display:none">
+<script>
+$(function () {
+ $('#fileupload').fileupload({
+  dataType: 'text',
+  done: function (e, data) {
+   $('#load_and_reload').prop("value", "reload")
+  }
+ });
+});
+</script>
+
 <a href="../../execjson">logdir</a>
 {% if role == "opsuser" %}
 <a href="dashboard">dashboard</a>

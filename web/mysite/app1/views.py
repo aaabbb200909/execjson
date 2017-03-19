@@ -2,7 +2,7 @@
 # Create your views here.
 from django.http import HttpResponse
 from django.shortcuts import render_to_response,render, redirect
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.utils.translation import ugettext as _
 import json, re, time, os
 
@@ -69,13 +69,14 @@ def createmultiopjs():
  return multiopjs
 
 
-@csrf_protect
+@csrf_exempt
 def index(request):
     role=get_authorization(request)
     joblist=[]
     dictforjs={}
     if ("dictforjs" in request.session):
      dictforjs=request.session['dictforjs']
+    #print (dictforjs)
 
     # Create javascript to set session:
     tmp=""
@@ -93,6 +94,7 @@ def index(request):
 
     # create multioplist
     tmp += createmultiopjs()
+    #print (tmp)
 
     return render(request, 'app1/index.html', {"joblist":joblist, "sessionjs": tmp, "role": role} )
 
@@ -139,12 +141,14 @@ def consumeoperationargs(jobname, duprp):
   return consume(duprp, ["sleep", "exception"])
 
 
-@csrf_protect
+@csrf_exempt
 def load(request):
     rp=request.POST
+    #print (rp)
     loadjson=request.FILES["putjson"].read() # hmm..
-    #print loadjson
+    #print (loadjson)
     dictforjs=json.loads(loadjson)
+    # print (dictforjs)
     request.session["dictforjs"]=dictforjs
     return redirect(index)
 
