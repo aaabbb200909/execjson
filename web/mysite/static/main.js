@@ -16,6 +16,7 @@ addjob = function(sortofop, id, time, iffail, numofoperations){
  var numofelements=$("#jobformdata").children().length + 1;
 
  $("#jobformdata").append(jobtemplate);
+ bind_deljobwhenclicked();
  lastelement=$("#jobformdata").children().last()
 
  if (!numofoperations){
@@ -57,8 +58,8 @@ deljob = function(){
   $("#jobformdata .job").eq(delpos1 - 1).remove();
  }
  resetjobnumber();
-
 }
+
 
 changejobpos = function(){
   jobpos1=$("#jobpos1").val();
@@ -74,6 +75,15 @@ resetjobnumber = function() {
    $(this).text(index + " ");
   }
  );
+}
+
+bind_deljobwhenclicked = function(){
+ $(document).on("click", ".jobdelbutton",
+  function(event){
+    $(this).parent().remove();
+    resetjobnumber();
+  }
+ )
 }
 
 binddupdeltooperation = function(op){
