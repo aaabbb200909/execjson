@@ -2,17 +2,21 @@
 <html lang="ja">
 {% load i18n %}
 <head>
-	<meta charset="UTF-8">
-	<title></title>
-	<script src="../static/jquery-1.10.2.js"></script>
-	<script src="../static/jquery-ui-1.10.4.custom.js"></script>
-	<script src="../static/vendor/jquery.ui.widget.js"></script>
-	<script src="../static/jquery.fileupload.js"></script>
-	<script>
-	$(function() {
-	 $( "#jobformdata" ).sortable();
-	}); 
-	</script>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title></title>
+ <link href="../static/bootstrap.min.css" rel="stylesheet">
+ <script src="../static/jquery-1.10.2.js"></script>
+ <script src="../static/jquery-ui-1.10.4.custom.js"></script>
+ <script src="../static/vendor/jquery.ui.widget.js"></script>
+ <script src="../static/jquery.fileupload.js"></script>
+ <script src="../static/bootstrap.min.js"></script>
+ <script>
+ $(function() {
+  $( "#jobformdata" ).sortable();
+ }); 
+ </script>
 <style>
  .job {
   background-color: #EFF;
@@ -278,20 +282,20 @@ operation:<select id="sortofop" name="sortofop" onchange="addjob()">
 
 
 <div id="jobformcontrol">
-<input type="submit" value="save" name="save" />
-<input type="submit" value="exportjson" name="createjson"/>
+<input type="submit" value="save" class="btn btn-info" name="save" />
+<input type="submit" value="exportjson" class="btn btn-info" name="createjson"/>
 {% if role == "opsuser" %}
-<input type="submit" value="execjson" name="execjson"/>
+<input type="submit" value="execjson" class="btn btn-warning" name="execjson"/>
 {% endif %}
 </div>
 </form>
 
 <form method="get" action="clearcache" id="clearcache">{% csrf_token %} 
-<input type="submit" value="clearcache" name="clearcache" />
+<input type="submit" value="clearcache" class="btn btn-info" name="clearcache" />
 </form>
 
 <form method="get" action=".">
-<input type="submit" value="load" id="load_and_reload" />|drag-and-drop-json-here|
+<input type="submit" value="load" class="btn btn-info" id="load_and_reload" />|drag-and-drop-json-here|
 </form>
 <input id="fileupload" type="file" name="putjson" data-url="load" style="display:none">
 
