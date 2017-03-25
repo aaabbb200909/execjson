@@ -13,7 +13,7 @@ operationswithseveralops=['mkdir','filetransfer','editcron','editat',
 ]
 
 
-opsusers=['aaabbb_200909']
+opsusers=['opsuser']
 applusers=[]
 def get_authorization(request):
  ###
@@ -21,10 +21,12 @@ def get_authorization(request):
  ###
  if (request.META.has_key('HTTP_REMOTE_USER')):
   ivuser=request.META['HTTP_REMOTE_USER']
-  if ivuser in opsusers:
-   return 'opsuser'
-  elif ivuser in applusers:
-   return 'appluser'
+ elif (request.META.has_key('REMOTE_USER')):
+  ivuser=request.META['REMOTE_USER']
+ if ivuser in opsusers:
+  return 'opsuser'
+ elif ivuser in applusers:
+  return 'appluser'
  return 'normaluser'
 
 
