@@ -40,7 +40,7 @@
 
 <div id="jobtemplate" style="display:none">
 <div class="job">
-<b class="jobnumber"></b>id: <input type="text" name="id">
+<b class="jobnumber"></b><b class="jobdelbutton">[-]</b> id: <input type="text" name="id">
 {% trans "time" %}: <input type="text" name="time">
 {% trans "iffail" %}: <input type="text" name="iffail">
 </div>
@@ -238,7 +238,6 @@ Exception(yes or no):
 <div id="formcontrol">
 <ul>
  <li>
-<input type="button" value="addjob" onclick="addjob()">
 operation:<select id="sortofop" name="sortofop" onchange="addjob()">
 <option value="dummy">Operation:</option>
 <option value="mkdir"> {% trans "mkdir" %}</option>
@@ -256,10 +255,6 @@ operation:<select id="sortofop" name="sortofop" onchange="addjob()">
 <option value="others">{% trans "others" %}</option>
 <option value="sleepandexception">(testonly)sleep-exception</option>
 </select>
- </li>
- <li>
-<input type="button" value="deljob" onclick="deljob()">
-delpos1:<input id="delpos1" type="text" name="delpos1">
  </li>
 </ul>
 </div>
