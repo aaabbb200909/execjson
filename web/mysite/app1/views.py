@@ -15,19 +15,28 @@ operationswithseveralops=['mkdir','filetransfer','editcron','editat',
 
 opsusers=['opsuser']
 applusers=[]
+
+
+def get_user(request):
+ user=None
+ if (request.META.has_key('HTTP_X_FORWARDED_USER')):
+  user=request.META['HTTP_X_FORWARDED_USER']
+ elif (request.META.has_key('REMOTE_USER')):
+  user=request.META['REMOTE_USER']
+ #print (user)
+ return user
+
 def get_authorization(request):
  ###
- return 'opsuser' # for test purpose
+ #return 'opsuser' # for test purpose
  ###
- if (request.META.has_key('HTTP_REMOTE_USER')):
-  ivuser=request.META['HTTP_REMOTE_USER']
- elif (request.META.has_key('REMOTE_USER')):
-  ivuser=request.META['REMOTE_USER']
- if ivuser in opsusers:
+ user=get_user(request)
+ if user in opsusers:
   return 'opsuser'
- elif ivuser in applusers:
+ elif user in applusers:
   return 'appluser'
  return 'normaluser'
+
 
 
 class jsonpair():
@@ -73,6 +82,7 @@ def createmultiopjs():
 
 @csrf_exempt
 def index(request):
+    user=get_user(request)
     role=get_authorization(request)
     joblist=[]
     dictforjs={}
@@ -98,7 +108,7 @@ def index(request):
     tmp += createmultiopjs()
     #print (tmp)
 
-    return render(request, 'app1/index.html', {"joblist":joblist, "sessionjs": tmp, "role": role} )
+    return render(request, 'app1/index.html', {"joblist":joblist, "sessionjs": tmp, "role": role, "user": user} )
 
 
 def pop_evenif_not_list(list_or_not):
@@ -154,6 +164,28 @@ def load(request):
     request.session["dictforjs"]=dictforjs
     return redirect(index)
 
+from app1.models import user_id_jsons
+
+@csrf_protect
+def dbsave(request):
+    user=get_user(request)
+    if (user == None):
+      raise Exception("anonymous user can't use dbsave")
+    dictforjs = request.session["dictforjs"]
+    savejson=json.dumps(dictforjs)
+    savedata=user_id_jsons(user=user, saveid='1', json=savejson)
+    savedata.save()
+    return redirect(index)
+
+def dbload(request):
+    user=get_user(request)
+    if (user == None):
+      raise Exception("anonymous user can't use dbload")
+    rp=request.POST
+    loadjson=user_id_jsons.objects.get(user=user, saveid='1').json
+    dictforjs=json.loads(loadjson)
+    request.session["dictforjs"]=dictforjs
+    return redirect(index)
 
 @csrf_protect
 def clearcache(request):
