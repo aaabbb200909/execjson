@@ -294,13 +294,14 @@ operation:<select id="sortofop" name="sortofop" onchange="addjob()">
 <input type="submit" value="clearcache" class="btn btn-info" name="clearcache" />
 </form>
 
+{% if user != None %}
 <form method="post" action="dbsave" id="dbsave">{% csrf_token %} 
 <input type="submit" value="dbsave" class="btn btn-info" name="dbsave" />
 </form>
-
 <form method="post" action="dbload" id="dbload">{% csrf_token %} 
 <input type="submit" value="dbload" class="btn btn-info" name="dbload" />
 </form>
+{% endif %}
 
 <form method="get" action=".">
 <input type="submit" value="load" class="btn btn-info" id="load_and_reload" />|drag-and-drop-json-here|
