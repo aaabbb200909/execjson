@@ -1,6 +1,6 @@
-jsondir="/var/tmp/execjson/tmp/jsondir/"
 bindir=$(dirname $0)
-logdir="/var/www/html/execjson/"
+jsondir=$(../manage.py shell -c 'import mysite; print (mysite.settings.jsondir)')
+logdir=$(../manage.py shell -c 'import mysite; print (mysite.settings.logdir)')
 
 cd ${bindir} # fabfile is there
 while true

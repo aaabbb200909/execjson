@@ -4,18 +4,19 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response,render, redirect
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.utils.translation import ugettext as _
+import mysite
 import json, re, time, os
-
-testjsondir='/var/tmp/execjson/tmp/jsondir/'
-###
-operationswithseveralops=['mkdir','filetransfer','editcron','editat', 
- 'modifyuseros', 'passwdresetos', 'deletefile', "modifydns"
-]
 
 
 opsusers=['opsuser']
 applusers=[]
 
+###
+operationswithseveralops=['mkdir','filetransfer','editcron','editat', 
+ 'modifyuseros', 'passwdresetos', 'deletefile', "modifydns"
+]
+
+jsondir=mysite.settings.jsondir
 
 def get_user(request):
  user=None
@@ -270,7 +271,7 @@ def createjson(request):
     elif ('execjson' in rp):
      if (role == "opsuser"):
       tmp=json.dumps(dictforjs, sort_keys=True, indent=4)
-      with open(testjsondir+currenttime+".json", "w") as f:
+      with open(jsondir+currenttime+".json", "w") as f:
        f.write(tmp)
       return HttpResponse(tmp)
      else:
@@ -292,7 +293,7 @@ def postjson(request):
     dictforjs=json.loads(loadjson)
     if (role == "opsuser"):
       tmp=json.dumps(dictforjs, sort_keys=True, indent=4)
-      with open(testjsondir+currenttime+".json", "w") as f:
+      with open(jsondir+currenttime+".json", "w") as f:
        f.write(tmp)
       return HttpResponse(tmp)
 

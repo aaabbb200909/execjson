@@ -123,3 +123,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+##
+# application specific defs
+##
+rootdir='/var/tmp/'
+jsondir=rootdir+'execjson/tmp/jsondir/'
+logdir="/var/www/html/execjson/"
