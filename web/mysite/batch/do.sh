@@ -15,10 +15,16 @@ do
    applcode=$(grep jobapplcode ${jsonfile} | awk -F: '{print $2}' | awk -F\" '{print $2}' )
    if [[ -n ${applcode} ]]
    then
-    logdir=${logdir}/${applcode}
+    appl_logdir=${logdir}/${applcode}
+    if [[ ! -d ${appl_logdir} ]]
+    then
+     mkdir ${appl_logdir}
+    fi
+   else
+    appl_logdir=${logdir}
    fi
-   echo logdir: $logdir
-   ${bindir}/do.py ${jsonfile} > ${logdir}/${jsonname}.txt 2>&1 &
+   echo logdir: $appl_logdir
+   ${bindir}/do.py ${jsonfile} > ${appl_logdir}/${jsonname}.txt 2>&1 &
   fi
  done
  echo ""
