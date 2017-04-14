@@ -2,7 +2,12 @@
 # -*- coding: utf-8 -*-
 #
 import subprocess
-import sys, json, glob, threading, time, os
+import sys
+import json
+import glob
+import threading
+import time
+import os
 
 ###
 dryrun=True

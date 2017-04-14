@@ -5,7 +5,10 @@ from django.shortcuts import render_to_response,render, redirect
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.utils.translation import ugettext as _
 import mysite
-import json, re, time, os
+import json
+import re
+import time
+import os
 
 
 opsusers=['opsuser']
@@ -178,6 +181,7 @@ def dbsave(request):
     savedata.save()
     return redirect(index)
 
+@csrf_protect
 def dbload(request):
     user=get_user(request)
     if (user == None):
@@ -273,7 +277,7 @@ def createjson(request):
       tmp=json.dumps(dictforjs, sort_keys=True, indent=4)
       with open(jsondir+currenttime+".json", "w") as f:
        f.write(tmp)
-      return HttpResponse(tmp)
+      return redirect(index)
      else:
       return HttpResponse("You are not authorized.")
     elif ('save' in rp):
@@ -283,6 +287,7 @@ def createjson(request):
      return HttpResponse("ViewError: NoSuchActionDefined")
 
 
+@csrf_exempt
 def postjson(request):
     # web service json upload
     # for this view, I can't use csrf middleware ..

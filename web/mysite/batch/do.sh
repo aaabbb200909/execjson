@@ -24,7 +24,9 @@ do
     appl_logdir=${logdir}
    fi
    echo logdir: $appl_logdir
-   ${bindir}/do.py ${jsonfile} > ${appl_logdir}/${jsonname}.txt 2>&1 &
+   logpath=${appl_logdir}/${jsonname}.txt
+   echo logpath: ${logpath}
+   ${bindir}/do.py ${jsonfile} > ${logpath} 2>&1 &
   fi
  done
  echo ""

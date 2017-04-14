@@ -123,6 +123,5 @@ STATICFILES_DIRS = [
 ##
 # application specific defs
 ##
-rootdir='/var/tmp/'
-jsondir=rootdir+'execjson/tmp/jsondir/'
+jsondir=BASE_DIR+'/../../tmp/jsondir/'
 logdir="/var/www/html/execjson/"
