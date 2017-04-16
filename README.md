@@ -28,6 +28,11 @@ http://localhost:8000/app1/
     $ cd /var/tmp/execjson/web/mysite/batch/ && ./do.sh (Start job dispatcher)
 ~~~~
 
+or you can use docker
+~~~~
+$ sudo docker run -d -p 8000:8000 tnaganawa/execjson
+~~~~
+
 # Usage
 https://github.com/aaabbb200909/execjson/wiki
 

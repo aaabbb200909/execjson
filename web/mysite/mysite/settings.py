@@ -125,3 +125,4 @@ STATICFILES_DIRS = [
 ##
 jsondir=BASE_DIR+'/../../tmp/jsondir/'
 logdir="/var/www/html/execjson/"
+use_authorization=False # let this be True, if you want to use authorization feature

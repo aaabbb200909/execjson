@@ -31,9 +31,8 @@ def get_user(request):
  return user
 
 def get_authorization(request):
- ###
- #return 'opsuser' # for test purpose
- ###
+ if (mysite.settings.use_authorization == False):
+  return 'opsuser' # authorization feature disabled
  user=get_user(request)
  if user in opsusers:
   return 'opsuser'
