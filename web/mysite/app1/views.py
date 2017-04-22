@@ -11,14 +11,14 @@ import time
 import os
 
 
-opsusers=['opsuser']
-applusers=[]
 
 ###
 operationswithseveralops=['mkdir','filetransfer','editcron','editat', 
  'modifyuseros', 'passwdresetos', 'deletefile', "modifydns"
 ]
 
+opsusers=mysite.settings.role_opsusers
+applusers=mysite.settings.role_applusers
 jsondir=mysite.settings.jsondir
 
 def get_user(request):
