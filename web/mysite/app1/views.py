@@ -17,8 +17,6 @@ operationswithseveralops=['mkdir','filetransfer','editcron','editat',
  'modifyuseros', 'passwdresetos', 'deletefile', "modifydns"
 ]
 
-opsusers=mysite.settings.role_opsusers
-applusers=mysite.settings.role_applusers
 jsondir=mysite.settings.jsondir
 
 def get_user(request):
@@ -34,10 +32,12 @@ def get_authorization(request):
  if (mysite.settings.use_authorization == False):
   return 'opsuser' # authorization feature disabled
  user=get_user(request)
- if user in opsusers:
+ if user in mysite.settings.role_opsusers:
   return 'opsuser'
- elif user in applusers:
+ elif user in mysite.settings.role_applusers:
   return 'appluser'
+ elif user in mysite.settings.role_managers:
+  return 'manager'
  return 'normaluser'
 
 
@@ -176,19 +176,33 @@ def dbsave(request):
       raise Exception("anonymous user can't use dbsave")
     dictforjs = request.session["dictforjs"]
     savejson=json.dumps(dictforjs)
-    savedata=user_id_jsons(user=user, saveid='1', json=savejson)
+    savedata=user_id_jsons(user=user, saveid='1', json=savejson, state='saved')
     savedata.save()
     return redirect(index)
 
 @csrf_protect
 def dbload(request):
     user=get_user(request)
+    role=get_authorization(request)
     if (user == None):
       raise Exception("anonymous user can't use dbload")
     rp=request.POST
-    loadjson=user_id_jsons.objects.get(user=user, saveid='1').json
+    if (role == 'manager'):
+      dbloaduser=rp.get('dbuser')
+    elif (role == 'opsuser'):
+      dbloaduser=rp.get('dbuser')
+      if (user_id_jsons.objects.get(user=dbloaduser, saveid='1').state != "approved"):
+        raise Exception("since this SR is not approved yet, i can't load this")
+    else:
+      dbloaduser=user
+    loadjson=user_id_jsons.objects.get(user=dbloaduser, saveid='1').json
     dictforjs=json.loads(loadjson)
     request.session["dictforjs"]=dictforjs
+    if (role == 'manager'):
+      if ('dbapprove' in rp):
+        dbuserjson=user_id_jsons.objects.get(user=dbloaduser, saveid='1')
+        dbuserjson.state='approved'
+        dbuserjson.save()
     return redirect(index)
 
 @csrf_protect

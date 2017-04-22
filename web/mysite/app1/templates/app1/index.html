@@ -254,6 +254,11 @@ Exception(yes or no):
 <form method="post" >
 <div id="formcontrol">
 <ul>
+{% if user != None %}
+ <li>
+ user: {{user}}
+ </li>
+{% endif %}
  <li>
 operation:<select id="sortofop" name="sortofop" onchange="addjob()">
 <option value="dummy">Operation:</option>
@@ -313,6 +318,12 @@ operation:<select id="sortofop" name="sortofop" onchange="addjob()">
 </form>
 <form method="post" action="dbload" id="dbload">{% csrf_token %} 
 <input type="submit" value="dbload" class="btn btn-info" name="dbload" />
+{% if role == "manager" or role == "opsuser" %}
+<input type="text" name="dbuser" />
+{% if role == "manager" %}
+<input type="submit" value="dbapprove" class="btn btn-warning" name="dbapprove" />
+{% endif %}
+{% endif %}
 </form>
 {% endif %}
 
