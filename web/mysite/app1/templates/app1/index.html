@@ -219,8 +219,21 @@ FQDN:<input type="text" name="fqdn">
 
 <div id="otherstemplate" style="display:none">
 <div class="operation">
+{% if not settings.use_svg_form %}
 {% trans "others" %}:<input type="text" name="name" value="others" style="display:none">
 {% trans "filename" %}:<input type="text" name="filename">
+{% else %}
+{% trans "others" %}:<input type="text" name="name" value="others" style="display:none">
+<svg width="300px" height="100px">
+ <rect x="0" y="10" width="10" height="30" fill="#0000ff" stroke="#000000"/>
+ <circle cx="230" cy="15" r="10" fill="#00ff00" fill-opacity="0.5"/>
+ <foreignObject x="20" y="0" width="200" height="50">
+   <body xmlns="http://www.w3.org/1999/xhtml">
+    {% trans "filename" %}: <input type="text" name="filename">
+   </body>
+ </foreignObject>
+</svg>
+{% endif %}
 </div>
 </div>
 

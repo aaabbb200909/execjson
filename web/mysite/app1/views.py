@@ -111,7 +111,7 @@ def index(request):
     tmp += createmultiopjs()
     #print (tmp)
 
-    return render(request, 'app1/index.html', {"joblist":joblist, "sessionjs": tmp, "role": role, "user": user} )
+    return render(request, 'app1/index.html', {"joblist":joblist, "sessionjs": tmp, "role": role, "user": user, "settings": mysite.settings} )
 
 
 def pop_evenif_not_list(list_or_not):
