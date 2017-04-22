@@ -128,5 +128,6 @@ logdir="/var/www/html/execjson/"
 use_authorization=False # let this be True, if you want to use authorization feature
 role_opsusers=['user1']
 role_applusers=['user2']
+use_workflow=False # let this be True, if you want to use workflow feature
 role_managers=['user9']
 use_svg_form=False # If True, template will be use svg feature in its HTML form
