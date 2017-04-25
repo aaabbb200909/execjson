@@ -131,3 +131,12 @@ role_applusers=['user2']
 use_workflow=False # let this be True, if you want to use workflow feature
 role_managers=['user9']
 use_svg_form=False # If True, template will be use svg feature in its HTML form
+jobs=[
+ {'jobname': 'testjob',
+  'args': ['server', 'arg1']
+ },
+ {'jobname': 'testjob2',
+  'args': ['arg0', 'arg1', 'arg2']
+ }
+]
+

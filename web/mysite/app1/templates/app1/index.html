@@ -250,6 +250,18 @@ Exception(yes or no):
 </div>
 </div>
 
+{% for job in settings.jobs %}
+<div id="{{ job.jobname }}template" style="display:none">
+<div class="operation">
+{{ job.jobname }}:<input type="text" name="name" value="{{ job.jobname }}" style="display:none">
+{% for arg in job.args %}
+{{ arg }}:<input type="text" name="{{ arg }}">
+{% endfor %}
+</div>
+</div>
+{% endfor %}
+
+
 
 <form method="post" >
 <div id="formcontrol">
@@ -276,6 +288,9 @@ operation:<select id="sortofop" name="sortofop" onchange="addjob()">
 <option value="addfirewallpolicy"> {% trans "addfirewallpolicy" %}</option>
 <option value="others">{% trans "others" %}</option>
 <option value="sleepandexception">(testonly)sleep-exception</option>
+{% for job in settings.jobs %}
+<option value="{{ job.jobname }}">{{ job.jobname }}</option>
+{% endfor %}
 </select>
  </li>
 </ul>

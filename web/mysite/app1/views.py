@@ -128,6 +128,11 @@ def consume(duprp, arglist):
  return tmp
 
 def consumeoperationargs(jobname, duprp):
+ for job in mysite.settings.jobs:
+  #print (jobname, job["jobname"])
+  if (jobname==job["jobname"]):
+   return consume(duprp, job["args"])
+
  if (jobname=="mkdir"):
   return consume(duprp, ["server", "path", "owner", "group", "mode"])
  elif (jobname=="filetransfer"):
