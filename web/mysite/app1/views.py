@@ -4,13 +4,12 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response,render, redirect
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.utils.translation import ugettext as _
+from app1.models import user_id_jsons
 import mysite
 import json
 import re
 import time
 import os
-
-
 
 ###
 operationswithseveralops=mysite.settings.operationswithseveralops
@@ -36,7 +35,6 @@ def get_authorization(request):
  elif user in mysite.settings.role_managers:
   return 'manager'
  return 'normaluser'
-
 
 
 class jsonpair():
@@ -129,30 +127,7 @@ def consumeoperationargs(jobname, duprp):
   #print (jobname, job["jobname"])
   if (jobname==job["jobname"]):
    return consume(duprp, job["args"])
-
- if (jobname=="mkdir"):
-  return consume(duprp, ["server", "path", "owner", "group", "mode"])
- elif (jobname=="filetransfer"):
-  return consume(duprp, ["srcserver", "srcpath", "dstserver", "dstpath", "owner", "group", "mode"])
- elif (jobname=="deletefile"):
-  return consume(duprp, ["server", "filepath"])
- elif (jobname=="execshell"):
-  return consume(duprp, ["server", "path", "user", "background"])
- elif (jobname=="editcron"):
-  return consume(duprp, ["operation", "server", "user", "minute", "hour", "day", "month", "dayofweek", "command"])
- elif (jobname=="editat"):
-  return consume(duprp, ["operation", "server", "user", "minute", "hour", "day", "month", "year", "command"])
- elif (jobname=="mountnfs"):
-  return consume(duprp, ["operation", "servername", "mountpoint", "mountoption", "nfsserver", "exportpath"])
- elif (jobname=="modifyuseros"):
-  return consume(duprp, ["operation", "server", "username", "firstname", "lastname" ,"groups"])
- elif (jobname=="passwdresetos"):
-  return consume(duprp, ["server", "username"])
- elif (jobname=="modifydns"):
-  return consume(duprp, ["operation", "fqdn", "ipaddr"])
- elif (jobname=="addfirewallpolicy"):
-  return consume(duprp, ["srcaddress", "srcnetmask", "destaddress", "destnetmask", "applicationname", "policy_then"])
- elif (jobname=="others"):
+ if (jobname=="others"):
   return consume(duprp, ["filename"])
  elif (jobname=="sleepandexception"):
   return consume(duprp, ["sleep", "exception"])
@@ -169,7 +144,6 @@ def load(request):
     request.session["dictforjs"]=dictforjs
     return redirect(index)
 
-from app1.models import user_id_jsons
 
 @csrf_protect
 def dbsave(request):
