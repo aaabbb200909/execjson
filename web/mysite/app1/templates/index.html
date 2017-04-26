@@ -51,6 +51,7 @@
 </div>
 
 
+{% if False %}
 <div id="mkdirtemplate" style="display:none">
 <div class="operation">
 {% trans "mkdir" %}:<b class="mkdirstart">[+]</b><input type="text" name="name" value="mkdir" style="display:none">
@@ -214,6 +215,7 @@ FQDN:<input type="text" name="fqdn">
 {% trans "policy_then" %}:<input type="text" name="policy_then">
 </div>
 </div>
+{% endif %}
 
 
 
@@ -253,7 +255,7 @@ Exception(yes or no):
 {% for job in settings.jobs %}
 <div id="{{ job.jobname }}template" style="display:none">
 <div class="operation">
-{{ job.jobname }}:<input type="text" name="name" value="{{ job.jobname }}" style="display:none">
+{{ job.jobname }}:{% if job.jobname in settings.operationswithseveralops %}<b class="{{ job.jobname }}start">[+]</b>{% endif %}<input type="text" name="name" value="{{ job.jobname }}" style="display:none">
 {% for arg in job.args %}
 {{ arg }}:<input type="text" name="{{ arg }}">
 {% endfor %}
@@ -274,6 +276,7 @@ Exception(yes or no):
  <li>
 operation:<select id="sortofop" name="sortofop" onchange="addjob()">
 <option value="dummy">Operation:</option>
+{% if False %}
 <option value="mkdir"> {% trans "mkdir" %}</option>
 <option value="filetransfer"> {% trans "filetransfer" %}</option>
 <option value="deletefile"> {% trans "deletefile" %}</option>
@@ -286,11 +289,12 @@ operation:<select id="sortofop" name="sortofop" onchange="addjob()">
 <option value="passwdresetos"> {% trans "passwdresetos" %}</option>
 <option value="modifydns"> {% trans "modifydns" %}</option>
 <option value="addfirewallpolicy"> {% trans "addfirewallpolicy" %}</option>
-<option value="others">{% trans "others" %}</option>
-<option value="sleepandexception">(testonly)sleep-exception</option>
+{% endif %}
 {% for job in settings.jobs %}
 <option value="{{ job.jobname }}">{{ job.jobname }}</option>
 {% endfor %}
+<option value="others">{% trans "others" %}</option>
+<option value="sleepandexception">(testonly)sleep-exception</option>
 </select>
  </li>
 </ul>

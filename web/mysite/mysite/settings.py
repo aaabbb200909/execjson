@@ -132,11 +132,43 @@ use_workflow=False # let this be True, if you want to use workflow feature
 role_managers=['user9']
 use_svg_form=False # If True, template will be use svg feature in its HTML form
 jobs=[
- {'jobname': 'testjob',
-  'args': ['server', 'arg1']
+ {'jobname': 'mkdir',
+  'args': ["server", "path", "owner", "group", "mode"]
  },
- {'jobname': 'testjob2',
-  'args': ['arg0', 'arg1', 'arg2']
+ {'jobname': 'filetransfer',
+  'args': ["srcserver", "srcpath", "dstserver", "dstpath", "owner", "group", "mode"]
+ },
+ {'jobname': "deletefile",
+  "args": ["server", "filepath"]
+ },
+ {'jobname': "execshell",
+  "args": ["server", "path", "user", "background"]
+ },
+ {'jobname': "editcron",
+  "args": ["operation", "server", "user", "minute", "hour", "day", "month", "dayofweek", "command"]
+ },
+ {'jobname': "editat",
+  "args": ["operation", "server", "user", "minute", "hour", "day", "month", "year", "command"]
+ },
+ {'jobname': "mountnfs",
+  "args": ["operation", "servername", "mountpoint", "mountoption", "nfsserver", "exportpath"]
+ },
+ {'jobname': "execsql",
+  "args": ["operation", "dbname", "filename"]
+ },
+ {'jobname': "modifyuseros",
+  "args": ["operation", "server", "username", "firstname", "lastname" ,"groups"]
+ },
+ {'jobname': "passwdresetos",
+  "args": ["server", "username"]
+ },
+ {'jobname': "modifydns",
+  "args": ["operation", "fqdn", "ipaddr"]
+ },
+ {'jobname': "addfirewallpolicy",
+  "args": ["srcaddress", "srcnetmask", "destaddress", "destnetmask", "applicationname", "policy_then"]
  }
 ]
-
+operationswithseveralops=['mkdir','filetransfer','editcron','editat', 
+ 'modifyuseros', 'passwdresetos', 'deletefile', "modifydns"
+]

@@ -13,10 +13,7 @@ import os
 
 
 ###
-operationswithseveralops=['mkdir','filetransfer','editcron','editat', 
- 'modifyuseros', 'passwdresetos', 'deletefile', "modifydns"
-]
-
+operationswithseveralops=mysite.settings.operationswithseveralops
 jsondir=mysite.settings.jsondir
 
 def get_user(request):
@@ -146,7 +143,7 @@ def consumeoperationargs(jobname, duprp):
  elif (jobname=="editat"):
   return consume(duprp, ["operation", "server", "user", "minute", "hour", "day", "month", "year", "command"])
  elif (jobname=="mountnfs"):
-  return consume(duprp, ["operation", "useautomount", "servername", "mountpoint", "mountoption", "nfsserver", "exportpath"])
+  return consume(duprp, ["operation", "servername", "mountpoint", "mountoption", "nfsserver", "exportpath"])
  elif (jobname=="modifyuseros"):
   return consume(duprp, ["operation", "server", "username", "firstname", "lastname" ,"groups"])
  elif (jobname=="passwdresetos"):
@@ -262,6 +259,7 @@ def createjson(request):
 
     #print ids, names
     if(not len(ids) == len(names)):
+     #raise Exception
      return HttpResponse(_("number of Job and number of Operation is different"))
 
     # Begin consume:
