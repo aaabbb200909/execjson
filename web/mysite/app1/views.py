@@ -71,7 +71,7 @@ def dashboard(request):
    }
   ]
   jsonpairs+=[jsonpair(jsonfilename, json.dumps(js, indent=4), repr(jsonsummary))]
- return render(request, 'app1/dashboard.html', {"jsonsummaries": jsonsummaries, "jsonpairs":jsonpairs})
+ return render(request, 'dashboard.html', {"jsonsummaries": jsonsummaries, "jsonpairs":jsonpairs})
 
 
 def createmultiopjs():
@@ -111,7 +111,7 @@ def index(request):
     tmp += createmultiopjs()
     #print (tmp)
 
-    return render(request, 'app1/index.html', {"joblist":joblist, "sessionjs": tmp, "role": role, "user": user, "settings": mysite.settings} )
+    return render(request, 'index.html', {"joblist":joblist, "sessionjs": tmp, "role": role, "user": user, "settings": mysite.settings} )
 
 
 def pop_evenif_not_list(list_or_not):
