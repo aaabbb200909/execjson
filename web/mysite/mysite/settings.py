@@ -142,28 +142,40 @@ jobs=[
   "args": ["server", "filepath"]
  },
  {'jobname': "execshell",
-  "args": ["server", "path", "user", "background"]
+  "args": ["server", "path", "user", "background"],
+  "selectargs": ["background"],
+  "selectargsoption": {"background": [["yes", "yes"], ["no", "no"]]}
  },
  {'jobname': "editcron",
-  "args": ["operation", "server", "user", "minute", "hour", "day", "month", "dayofweek", "command"]
+  "args": ["operation", "server", "user", "minute", "hour", "day", "month", "dayofweek", "command"],
+  "selectargs": ["operation"],
+  "selectargsoption": {"operation": [["add", "add"], ["del", "del"]]}
  },
  {'jobname': "editat",
-  "args": ["operation", "server", "user", "minute", "hour", "day", "month", "year", "command"]
+  "args": ["operation", "server", "user", "minute", "hour", "day", "month", "year", "command"],
+  "selectargs": ["operation"],
+  "selectargsoption": {"operation": [["add", "add"], ["del", "del"]]}
  },
  {'jobname': "mountnfs",
-  "args": ["operation", "servername", "mountpoint", "mountoption", "nfsserver", "exportpath"]
+  "args": ["operation", "servername", "mountpoint", "mountoption", "nfsserver", "exportpath"],
+  "selectargs": ["operation"],
+  "selectargsoption": {"operation": [["add", "add"], ["del", "del"]]}
  },
  {'jobname': "execsql",
   "args": ["operation", "dbname", "filename"]
  },
  {'jobname': "modifyuseros",
-  "args": ["operation", "server", "username", "firstname", "lastname" ,"groups"]
+  "args": ["operation", "server", "username", "firstname", "lastname" ,"groups"],
+  "selectargs": ["operation"],
+  "selectargsoption": {"operation": [["add", "add"], ["del", "del"]]}
  },
  {'jobname': "passwdresetos",
   "args": ["server", "username"]
  },
  {'jobname': "modifydns",
-  "args": ["operation", "fqdn", "ipaddr"]
+  "args": ["operation", "fqdn", "ipaddr"],
+  "selectargs": ["operation"],
+  "selectargsoption": {"operation": [["add", "add"], ["del", "del"]]}
  },
  {'jobname': "addfirewallpolicy",
   "args": ["srcaddress", "srcnetmask", "destaddress", "destnetmask", "applicationname", "policy_then"]
