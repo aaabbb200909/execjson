@@ -89,9 +89,9 @@ Exception(yes or no):
 <div class="operation">
 {{ job.jobname }}:{% if job.jobname in settings.operationswithseveralops %}<b class="{{ job.jobname }}start">[+]</b>{% endif %}<input type="text" name="name" value="{{ job.jobname }}" style="display:none">
 {% for arg in job.args %}
-{{ arg }}:{% if arg in job.selectargs %}
+{{ arg }}:{% if arg in job.selectargs.keys %}
 <select name="{{arg}}">
-{% for selectname, options  in job.selectargsoption.items %}
+{% for selectname, options  in job.selectargs.items %}
 {% if arg == selectname %}
 {% for option in options %}
 <option value="{{option.0}}">{{option.1}}</option>
