@@ -16,49 +16,48 @@ role_managers=['user9']
 use_svg_form=False # If True, template will be use svg feature in its HTML form
 jobs=[
  {'jobname': _('mkdir'),
-  'args': [_("server"), "path", "owner", "group", "mode"]
+  'args': [_("server"), _("path"), _("owner"), _("group"), _("mode")]
  },
- {'jobname': 'filetransfer',
-  'args': ["srcserver", "srcpath", "dstserver", "dstpath", "owner", "group", "mode"]
+ {'jobname': _('filetransfer'),
+  'args': [_("srcserver"), _("srcpath"), _("dstserver"), _("dstpath"), _("owner"), _("group"), _("mode")]
  },
  {'jobname': "deletefile",
-  "args": ["server", "filepath"]
+  "args": [_("server"), _( "filepath")]
  },
- {'jobname': "execshell",
-  "args": ["server", "path", "user", "background"],
+ {'jobname': _("execshell"),
+  "args": [_("server"), _("path"), _("user"), _("background")],
   "selectargs": {"background": [["yes", "yes"], ["no", "no"]]}
  },
- {'jobname': "editcron",
-  "args": ["operation", "server", "user", "minute", "hour", "day", "month", "dayofweek", "command"],
+ {'jobname': _("editcron"),
+  "args": [_("operation"), _( "server"), _( "user"), _( "minute"), _( "hour"), _( "day"), _( "month"), _( "dayofweek"), _( "command")],
   "selectargs": {"operation": [["add", "add"], ["del", "del"]]}
  },
- {'jobname': "editat",
-  "args": ["operation", "server", "user", "minute", "hour", "day", "month", "year", "command"],
+ {'jobname': _("editat"),
+  "args": [_("operation"), _("server"), _("user"), _("minute"), _("hour"), _("day"), _("month"), _("year"), _("command")],
   "selectargs": {"operation": [["add", "add"], ["del", "del"]]}
  },
- {'jobname': "mountnfs",
-  "args": ["operation", "servername", "mountpoint", "mountoption", "nfsserver", "exportpath"],
+ {'jobname': _("mountnfs"),
+  "args": [_("operation"), _("servername"), _("mountpoint"), _("mountoption"), _("nfsserver"), _("exportpath")],
   "selectargs": {"operation": [["add", "add"], ["del", "del"]]}
  },
- {'jobname': "execsql",
-  "args": ["operation", "dbname", "filename"]
+ {'jobname': _("execsql"),
+  "args": [_("operation"), _("dbname"), _("filename")]
  },
  {'jobname': "modifyuseros",
-  "args": ["operation", "server", "username", "firstname", "lastname" ,"groups"],
+  "args": [_("operation"), _("server"), _("username"), _("firstname"), _("lastname"), _("groups")],
   "selectargs": {"operation": [["add", "add"], ["del", "del"]]}
  },
- {'jobname': "passwdresetos",
-  "args": ["server", "username"]
+ {'jobname': _("passwdresetos"),
+  "args": [_("server"), _("username")]
  },
- {'jobname': "modifydns",
-  "args": ["operation", "fqdn", "ipaddr"],
+ {'jobname': _("modifydns"),
+  "args": [_("operation"), _("fqdn"), _("ipaddr")],
   "selectargs": {"operation": [["add", "add"], ["del", "del"]]}
  },
- {'jobname': "addfirewallpolicy",
-  "args": ["srcaddress", "srcnetmask", "destaddress", "destnetmask", "applicationname", "policy_then"]
+ {'jobname': _("addfirewallpolicy"),
+  "args": [_("srcaddress"), _("srcnetmask"), _("destaddress"), _("destnetmask"), _("applicationname"), _("policy_then")]
  }
 ]
-
 
 operationswithseveralops=['mkdir','filetransfer','editcron','editat', 
  'modifyuseros', 'passwdresetos', 'deletefile', "modifydns"

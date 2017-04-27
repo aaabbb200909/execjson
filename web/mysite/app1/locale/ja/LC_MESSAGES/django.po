@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-14 12:17+0000\n"
+"POT-Creation-Date: 2017-04-27 14:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,277 +17,274 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: app1/templates/app1/dashboard.html:15
-msgid "Summary"
-msgstr "サマリー"
-
-#: app1/templates/app1/dashboard.html:26
-msgid "Detail"
-msgstr "詳細欄"
-
-#: app1/templates/app1/index.html:48
-msgid "time"
-msgstr "実施時刻"
-
-#: app1/templates/app1/index.html:49
-msgid "iffail"
-msgstr "エラー時の対応"
-
-#: app1/templates/app1/index.html:56 app1/templates/app1/index.html:247
+#: app1/settings.py:18 app1/templates/index.html:125
 msgid "mkdir"
 msgstr "ディレクトリ作成"
 
-#: app1/templates/app1/index.html:57 app1/templates/app1/index.html:83
-#: app1/templates/app1/index.html:92 app1/templates/app1/index.html:111
-#: app1/templates/app1/index.html:130 app1/templates/app1/index.html:175
-#: app1/templates/app1/index.html:186
+#: app1/settings.py:19 app1/settings.py:25 app1/settings.py:28
+#: app1/settings.py:32 app1/settings.py:36 app1/settings.py:47
+#: app1/settings.py:51
 msgid "server"
 msgstr "サーバー"
 
-#: app1/templates/app1/index.html:58 app1/templates/app1/index.html:93
+#: app1/settings.py:19 app1/settings.py:28
 msgid "path"
 msgstr "パス"
 
-#: app1/templates/app1/index.html:59 app1/templates/app1/index.html:73
+#: app1/settings.py:19 app1/settings.py:22
 msgid "owner"
 msgstr "オーナー"
 
-#: app1/templates/app1/index.html:60 app1/templates/app1/index.html:74
+#: app1/settings.py:19 app1/settings.py:22
 msgid "group"
 msgstr "グループ"
 
-#: app1/templates/app1/index.html:61 app1/templates/app1/index.html:75
+#: app1/settings.py:19 app1/settings.py:22
 msgid "mode"
 msgstr "権限"
 
-#: app1/templates/app1/index.html:68 app1/templates/app1/index.html:248
+#: app1/settings.py:21 app1/templates/index.html:126
 msgid "filetransfer"
 msgstr "ファイル転送"
 
-#: app1/templates/app1/index.html:69
+#: app1/settings.py:22
 msgid "srcserver"
 msgstr "転送元サーバー"
 
-#: app1/templates/app1/index.html:70
+#: app1/settings.py:22
 msgid "srcpath"
 msgstr "転送元ファイル"
 
-#: app1/templates/app1/index.html:71
+#: app1/settings.py:22
 msgid "dstserver"
 msgstr "転送先サーバー"
 
-#: app1/templates/app1/index.html:72
+#: app1/settings.py:22
 msgid "dstpath"
 msgstr "転送先ファイル"
 
-#: app1/templates/app1/index.html:82 app1/templates/app1/index.html:249
-msgid "deletefile"
-msgstr "ファイル削除"
-
-#: app1/templates/app1/index.html:84
+#: app1/settings.py:25
 msgid "filepath"
 msgstr "ファイルパス"
 
-#: app1/templates/app1/index.html:91 app1/templates/app1/index.html:250
+#: app1/settings.py:27 app1/templates/index.html:128
 msgid "execshell"
 msgstr "シェル実行"
 
-#: app1/templates/app1/index.html:94 app1/templates/app1/index.html:112
-#: app1/templates/app1/index.html:131
+#: app1/settings.py:28 app1/settings.py:32 app1/settings.py:36
 msgid "user"
 msgstr "実行ユーザー"
 
-#: app1/templates/app1/index.html:95
+#: app1/settings.py:28
 msgid "background"
 msgstr "バックグラウンド実行"
 
-#: app1/templates/app1/index.html:105 app1/templates/app1/index.html:251
+#: app1/settings.py:31 app1/templates/index.html:129
 msgid "editcron"
 msgstr "cron登録削除"
 
-#: app1/templates/app1/index.html:106 app1/templates/app1/index.html:145
-#: app1/templates/app1/index.html:170 app1/templates/app1/index.html:196
+#: app1/settings.py:32 app1/settings.py:36 app1/settings.py:40
+#: app1/settings.py:44 app1/settings.py:47 app1/settings.py:54
 msgid "operation"
 msgstr "作業種別"
 
-#: app1/templates/app1/index.html:108 app1/templates/app1/index.html:127
-#: app1/templates/app1/index.html:147 app1/templates/app1/index.html:172
-#: app1/templates/app1/index.html:198
-msgid "add"
-msgstr "追加"
-
-#: app1/templates/app1/index.html:109 app1/templates/app1/index.html:128
-#: app1/templates/app1/index.html:148 app1/templates/app1/index.html:173
-#: app1/templates/app1/index.html:199
-msgid "del"
-msgstr "削除"
-
-#: app1/templates/app1/index.html:113 app1/templates/app1/index.html:132
+#: app1/settings.py:32 app1/settings.py:36
 msgid "minute"
 msgstr "分"
 
-#: app1/templates/app1/index.html:114 app1/templates/app1/index.html:133
+#: app1/settings.py:32 app1/settings.py:36
 msgid "hour"
 msgstr "時"
 
-#: app1/templates/app1/index.html:115 app1/templates/app1/index.html:134
+#: app1/settings.py:32 app1/settings.py:36
 msgid "day"
 msgstr "日"
 
-#: app1/templates/app1/index.html:116 app1/templates/app1/index.html:135
+#: app1/settings.py:32 app1/settings.py:36
 msgid "month"
 msgstr "月"
 
-#: app1/templates/app1/index.html:117
+#: app1/settings.py:32
 msgid "dayofweek"
 msgstr "曜日"
 
-#: app1/templates/app1/index.html:118 app1/templates/app1/index.html:137
+#: app1/settings.py:32 app1/settings.py:36
 msgid "command"
 msgstr "コマンド"
 
-#: app1/templates/app1/index.html:124 app1/templates/app1/index.html:252
+#: app1/settings.py:35 app1/templates/index.html:130
 msgid "editat"
 msgstr "at編集"
 
-#: app1/templates/app1/index.html:125
-msgid "oparation"
-msgstr "作業種別"
-
-#: app1/templates/app1/index.html:136
+#: app1/settings.py:36
 msgid "year"
 msgstr "年"
 
-#: app1/templates/app1/index.html:144 app1/templates/app1/index.html:253
+#: app1/settings.py:39 app1/templates/index.html:131
 msgid "mountnfs"
 msgstr "NFSマウント・アンマウント"
 
-#: app1/templates/app1/index.html:150
+#: app1/settings.py:40
 msgid "servername"
 msgstr "サーバー名"
 
-#: app1/templates/app1/index.html:151
+#: app1/settings.py:40
 msgid "mountpoint"
 msgstr "マウントポイント"
 
-#: app1/templates/app1/index.html:152
+#: app1/settings.py:40
 msgid "mountoption"
 msgstr "マウントオプション"
 
-#: app1/templates/app1/index.html:153
+#: app1/settings.py:40
 msgid "nfsserver"
 msgstr "NFSサーバー名"
 
-#: app1/templates/app1/index.html:154
+#: app1/settings.py:40
 msgid "exportpath"
 msgstr "エクスポートパス"
 
-#: app1/templates/app1/index.html:161 app1/templates/app1/index.html:254
+#: app1/settings.py:43 app1/templates/index.html:132
 msgid "execsql"
 msgstr "SQL実行"
 
-#: app1/templates/app1/index.html:162
+#: app1/settings.py:44
 msgid "dbname"
 msgstr "DB名"
 
-#: app1/templates/app1/index.html:163 app1/templates/app1/index.html:223
+#: app1/settings.py:44 app1/templates/index.html:58
+#: app1/templates/index.html:66
 msgid "filename"
 msgstr "ファイル名"
 
-#: app1/templates/app1/index.html:169 app1/templates/app1/index.html:255
-msgid "modifyuseros"
-msgstr "ユーザー作成(OS)"
-
-#: app1/templates/app1/index.html:176 app1/templates/app1/index.html:187
+#: app1/settings.py:47 app1/settings.py:51
 msgid "username"
 msgstr "ユーザー名"
 
-#: app1/templates/app1/index.html:177
+#: app1/settings.py:47
 msgid "firstname"
 msgstr "名前"
 
-#: app1/templates/app1/index.html:178
+#: app1/settings.py:47
 msgid "lastname"
 msgstr "苗字"
 
-#: app1/templates/app1/index.html:179
+#: app1/settings.py:47
 msgid "groups"
 msgstr "所属グループ"
 
-#: app1/templates/app1/index.html:185 app1/templates/app1/index.html:256
+#: app1/settings.py:50 app1/templates/index.html:134
 msgid "passwdresetos"
 msgstr "パスワードリセット(OS)"
 
-#: app1/templates/app1/index.html:195 app1/templates/app1/index.html:257
+#: app1/settings.py:53 app1/templates/index.html:135
 msgid "modifydns"
 msgstr "DNS登録・削除"
 
-#: app1/templates/app1/index.html:202
+#: app1/settings.py:54
+msgid "fqdn"
+msgstr ""
+
+#: app1/settings.py:54
 msgid "ipaddr"
 msgstr "IPアドレス"
 
-#: app1/templates/app1/index.html:208 app1/templates/app1/index.html:258
+#: app1/settings.py:57 app1/templates/index.html:136
 msgid "addfirewallpolicy"
-msgstr ""
+msgstr "ファイアウォールポリシーの追加"
 
-#: app1/templates/app1/index.html:209
+#: app1/settings.py:58
 msgid "srcaddress"
 msgstr ""
 
-#: app1/templates/app1/index.html:210
+#: app1/settings.py:58
 msgid "srcnetmask"
 msgstr ""
 
-#: app1/templates/app1/index.html:211
+#: app1/settings.py:58
 msgid "destaddress"
 msgstr ""
 
-#: app1/templates/app1/index.html:212
+#: app1/settings.py:58
 msgid "destnetmask"
 msgstr ""
 
-#: app1/templates/app1/index.html:213
+#: app1/settings.py:58
 #, fuzzy
 #| msgid "lastname"
 msgid "applicationname"
 msgstr "苗字"
 
-#: app1/templates/app1/index.html:214
+#: app1/settings.py:58
 msgid "policy_then"
 msgstr ""
 
-#: app1/templates/app1/index.html:222 app1/templates/app1/index.html:259
+#: app1/templates/dashboard.html:16
+msgid "Summary"
+msgstr "サマリー"
+
+#: app1/templates/dashboard.html:27
+msgid "Detail"
+msgstr "詳細欄"
+
+#: app1/templates/index.html:48
+msgid "time"
+msgstr "実施時刻"
+
+#: app1/templates/index.html:49
+msgid "iffail"
+msgstr "エラー時の対応"
+
+#: app1/templates/index.html:57 app1/templates/index.html:60
+#: app1/templates/index.html:141
 msgid "others"
 msgstr "その他の作業"
 
-#: app1/templates/app1/index.html:272
+#: app1/templates/index.html:127
+msgid "deletefile"
+msgstr "ファイル削除"
+
+#: app1/templates/index.html:133
+msgid "modifyuseros"
+msgstr "ユーザー作成(OS)"
+
+#: app1/templates/index.html:154
 msgid "envcode"
 msgstr "環境"
 
-#: app1/templates/app1/index.html:274
+#: app1/templates/index.html:156
 msgid "Prod"
 msgstr "本番"
 
-#: app1/templates/app1/index.html:275
+#: app1/templates/index.html:157
 msgid "Dev"
 msgstr "開発"
 
-#: app1/templates/app1/index.html:277
+#: app1/templates/index.html:159
 msgid "systemname"
 msgstr "システム名"
 
-#: app1/views.py:212
+#: app1/views.py:203
 msgid "non numeric caracter is used in an ID: "
 msgstr "IDに数字以外の値が使用されています:"
 
-#: app1/views.py:220
+#: app1/views.py:211
 msgid "incorrect time format:"
 msgstr "時刻のフォーマットが異なります:"
 
-#: app1/views.py:225
+#: app1/views.py:216
 msgid "iffail contailns invalid value: stop/go, or ID cound be used:"
 msgstr "失敗時の動作にstop/go, 及び実行するID以外の値が指定されています:"
 
-#: app1/views.py:244
+#: app1/views.py:236
 msgid "number of Job and number of Operation is different"
 msgstr "Jobの数とOperationの数が一致しません。"
+
+#~ msgid "add"
+#~ msgstr "追加"
+
+#~ msgid "del"
+#~ msgstr "削除"
+
+#~ msgid "oparation"
+#~ msgstr "作業種別"
