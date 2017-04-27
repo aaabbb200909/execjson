@@ -121,20 +121,6 @@ Exception(yes or no):
  <li>
 operation:<select id="sortofop" name="sortofop" onchange="addjob()">
 <option value="dummy">Operation:</option>
-{% if False %}
-<option value="mkdir"> {% trans "mkdir" %}</option>
-<option value="filetransfer"> {% trans "filetransfer" %}</option>
-<option value="deletefile"> {% trans "deletefile" %}</option>
-<option value="execshell"> {% trans "execshell" %}</option>
-<option value="editcron"> {% trans "editcron" %}</option>
-<option value="editat"> {% trans "editat" %}</option>
-<option value="mountnfs"> {% trans "mountnfs" %}</option>
-<option value="execsql"> {% trans "execsql" %}</option>
-<option value="modifyuseros"> {% trans "modifyuseros" %}</option>
-<option value="passwdresetos"> {% trans "passwdresetos" %}</option>
-<option value="modifydns"> {% trans "modifydns" %}</option>
-<option value="addfirewallpolicy"> {% trans "addfirewallpolicy" %}</option>
-{% endif %}
 {% for job in settings.jobs %}
 <option value="{{ job.jobname }}">{% trans job.jobname %}</option>
 {% endfor %}
