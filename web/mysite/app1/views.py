@@ -5,15 +5,15 @@ from django.shortcuts import render_to_response,render, redirect
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
 from django.utils.translation import ugettext as _
 from app1.models import user_id_jsons
-import mysite
+import app1.settings as settings
 import json
 import re
 import time
 import os
 
 ###
-operationswithseveralops=mysite.settings.operationswithseveralops
-jsondir=mysite.settings.jsondir
+operationswithseveralops=settings.operationswithseveralops
+jsondir=settings.jsondir
 
 def get_user(request):
  user=None
@@ -25,14 +25,14 @@ def get_user(request):
  return user
 
 def get_authorization(request):
- if (mysite.settings.use_authorization == False):
+ if (settings.use_authorization == False):
   return 'opsuser' # authorization feature disabled
  user=get_user(request)
- if user in mysite.settings.role_opsusers:
+ if user in settings.role_opsusers:
   return 'opsuser'
- elif user in mysite.settings.role_applusers:
+ elif user in settings.role_applusers:
   return 'appluser'
- elif user in mysite.settings.role_managers:
+ elif user in settings.role_managers:
   return 'manager'
  return 'normaluser'
 
@@ -106,7 +106,7 @@ def index(request):
     tmp += createmultiopjs()
     #print (tmp)
 
-    return render(request, 'index.html', {"joblist":joblist, "sessionjs": tmp, "role": role, "user": user, "settings": mysite.settings} )
+    return render(request, 'index.html', {"joblist":joblist, "sessionjs": tmp, "role": role, "user": user, "settings": settings} )
 
 
 def pop_evenif_not_list(list_or_not):
@@ -123,8 +123,7 @@ def consume(duprp, arglist):
  return tmp
 
 def consumeoperationargs(jobname, duprp):
- for job in mysite.settings.jobs:
-  #print (jobname, job["jobname"])
+ for job in settings.jobs:
   if (jobname==job["jobname"]):
    return consume(duprp, job["args"])
  if (jobname=="others"):
@@ -254,7 +253,7 @@ def createjson(request):
      #
      joblist.append(job)
 
-    #print job
+    #print (dictforjs)
     # Depending on methods, do what you wanna do:
     currenttime=time.strftime("%Y%m%d-%H%M%S",time.localtime())
     if ('createjson' in rp):

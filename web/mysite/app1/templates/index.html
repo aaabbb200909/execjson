@@ -87,9 +87,10 @@ Exception(yes or no):
 {% for job in settings.jobs %}
 <div id="{{ job.jobname }}template" style="display:none">
 <div class="operation">
-{{ job.jobname }}:{% if job.jobname in settings.operationswithseveralops %}<b class="{{ job.jobname }}start">[+]</b>{% endif %}<input type="text" name="name" value="{{ job.jobname }}" style="display:none">
+{% trans job.jobname %}:{% if job.jobname in settings.operationswithseveralops %}<b class="{{ job.jobname }}start">[+]</b>{% endif %}<input type="text" name="name" value="{{ job.jobname }}" style="display:none">
 {% for arg in job.args %}
-{{ arg }}:{% if arg in job.selectargs.keys %}
+{% trans arg %}:
+{% if arg in job.selectargs.keys %}
 <select name="{{arg}}">
 {% for selectname, options  in job.selectargs.items %}
 {% if arg == selectname %}
@@ -99,7 +100,9 @@ Exception(yes or no):
 {% endif %}
 {% endfor %}
 </select>
-{% else %}<input type="text" name="{{ arg }}">{% endif %}
+{% else %}
+<input type="text" name="{{ arg }}">
+{% endif %}
 {% endfor %}
 </div>
 </div>
@@ -133,7 +136,7 @@ operation:<select id="sortofop" name="sortofop" onchange="addjob()">
 <option value="addfirewallpolicy"> {% trans "addfirewallpolicy" %}</option>
 {% endif %}
 {% for job in settings.jobs %}
-<option value="{{ job.jobname }}">{{ job.jobname }}</option>
+<option value="{{ job.jobname }}">{% trans job.jobname %}</option>
 {% endfor %}
 <option value="others">{% trans "others" %}</option>
 <option value="sleepandexception">(testonly)sleep-exception</option>
