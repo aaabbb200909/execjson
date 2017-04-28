@@ -119,7 +119,9 @@ def consume(duprp, arglist):
  tmp={}
  for k in arglist:
   #print duprp[k]
-  tmp[k]=pop_evenif_not_list(duprp.getlist(k))
+  list_of_arg=duprp.getlist(k)
+  tmp[k]=pop_evenif_not_list(list_of_arg)
+  duprp.setlist(k, list_of_arg)
  return tmp
 
 def consumeoperationargs(jobname, duprp):

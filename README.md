@@ -15,7 +15,7 @@ It is also able to dispatch serial or parallel job, based on your JSON.
 # Install
 
 You need to setup Django to install execjson.
-- prefered setting: Django1.10 (When 1.11 is used, it doesn't work well, currently)
+- prefered setting: Django1.11
 
 ~~~~
     $ cd /var/tmp && git clone git@github.com:aaabbb200909/execjson.git
