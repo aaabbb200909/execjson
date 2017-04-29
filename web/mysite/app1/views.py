@@ -194,6 +194,7 @@ def clearcache(request):
 @csrf_protect
 def createjson(request):
     role=get_authorization(request)
+    user=get_user(request)
     rp=request.POST
     duprp=rp.copy() # Consume all the tokens with consume_xxx methods
     #print (duprp)
@@ -241,7 +242,7 @@ def createjson(request):
     jobenvcode=rp.getlist('jobenvcode')[0]
     jobapplcode=rp.getlist('jobapplcode')[0]
     joblist=[]
-    dictforjs={"jobenvcode": jobenvcode, "jobapplcode": jobapplcode, "joblist": joblist}
+    dictforjs={"jobenvcode": jobenvcode, "jobapplcode": jobapplcode, "joblist": joblist, 'user': user}
     #print duprp
     for i in range(len(jobtimes)):
      job={}
