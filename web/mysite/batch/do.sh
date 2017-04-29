@@ -13,15 +13,19 @@ do
   then
    echo "exec:" ${jsonfile}
    applcode=$(grep jobapplcode ${jsonfile} | awk -F: '{print $2}' | awk -F\" '{print $2}' )
+   user=$(grep '^    "user' ${jsonfile} | awk -F: '{print $2}' | awk -F\" '{print $2}' ) # hmm ...
    if [[ -n ${applcode} ]]
    then
     appl_logdir=${logdir}/${applcode}
-    if [[ ! -d ${appl_logdir} ]]
-    then
-     mkdir ${appl_logdir}
-    fi
+   elif [[ -n ${user} ]]
+   then
+    appl_logdir=${logdir}/${user}
    else
     appl_logdir=${logdir}
+   fi
+   if [[ ! -d ${appl_logdir} ]]
+   then
+    mkdir ${appl_logdir}
    fi
    echo logdir: $appl_logdir
    logpath=${appl_logdir}/${jsonname}.txt
