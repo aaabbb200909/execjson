@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: execjson-containers
+spec:
+  restartPolicy: Never 
+  containers:
+  - name: elasticsearch-container
+    image: elasticsearch
+  - name: kibana-container
+    image: kibana
+    env:
+      - name: "ELASTICSEARCH_URL"
+        value: "http://127.0.0.1:9200"
+  - name: execjson-container
+    image: tnaganawa/execjson
