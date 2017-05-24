@@ -1,0 +1,23 @@
+{
+    "@timestamp": "2017/05/24 22:47:45", 
+    "jobapplcode": "", 
+    "jobenvcode": "Prod", 
+    "user": null, 
+    "joblist": [
+        {
+            "name": "sleepandexception", 
+            "args": [
+                {
+                    "exception": "yes", 
+                    "sleep": "10"
+                }
+            ], 
+            "state": "abended", 
+            "starttime": "2017/05/24 22:47:45", 
+            "time": "", 
+            "iffail": "stop", 
+            "endtime": "2017/05/24 22:47:55", 
+            "id": "1"
+        }
+    ]
+}
