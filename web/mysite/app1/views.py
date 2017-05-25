@@ -294,3 +294,41 @@ def postjson(request):
        f.write(tmp)
       return HttpResponse(tmp)
 
+@csrf_exempt
+def alertmanager(request):
+ """
+ To test this logic:
+ $ curl -H "Content-Type: application/json" -d '{"alerts":[{"labels":{"alertname":"execjson-test-alert"}}]}' 127.0.0.1:8000/app1/alertmanager
+ $ curl -H "Content-Type: application/json" -d '[{"labels":{"alertname":"execjson-test-alert", "service": "files"}}]' 172.17.0.5:9093/api/v1/alerts
+ """
+ js=json.loads(request.body)
+ alertname=js["alerts"][0]["labels"]["alertname"]
+ #print (alertname)
+ test_json={
+        "jobapplcode": "",
+        "jobenvcode": "Prod",
+        "joblist": [
+          {
+            "args": [
+            {
+                "exception": "yes",
+                "sleep": "10"
+            }
+            ],
+            "id": "1",
+            "iffail": "stop",
+            "name": "sleepandexception",
+            "time": ""
+          }
+        ],
+        "user": None
+    }
+ if (alertname=="execjson-test-alert"):
+  js_for_action=test_json
+ else:
+  raise Exception("No Such alertname: {0}".format(alertname))
+ tmp=json.dumps(js_for_action, sort_keys=True, indent=4)
+ currenttime=time.strftime("%Y%m%d-%H%M%S",time.localtime())
+ with open(jsondir+currenttime+".json", "w") as f:
+  f.write(tmp)
+ return HttpResponse("200 OK received alertmanager json")

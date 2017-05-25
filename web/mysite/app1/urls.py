@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^clearcache$', views.clearcache, name='clearcache'),
     url(r'^dbsave$', views.dbsave, name='dbsave'),
     url(r'^dbload$', views.dbload, name='dbload'),
-    url(r'^dashboard$', views.dashboard, name='dashboard')
+    url(r'^dashboard$', views.dashboard, name='dashboard'),
+    url(r'^alertmanager$', views.alertmanager, name='alertmanager')
 ]
 
