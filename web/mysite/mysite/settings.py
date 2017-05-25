@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '^2c-h@c6&)clx908%ir7inhj#7)0=y@885k%$tna=rr^xnxle('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -39,10 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debug_toolbar',
 ]
 
-INTERNAL_IPS = ('127.0.0.1',)
 
 MIDDLEWARE = [
     'django.middleware.locale.LocaleMiddleware',
@@ -53,7 +51,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -130,3 +127,19 @@ STATICFILES_DIRS = [
 ##
 jsondir=BASE_DIR+'/../../tmp/jsondir/'
 logdir="/var/www/html/execjson/"
+
+
+# override settings if local_settings.py is there
+try:
+ from .local_settings import *
+except ImportError as e:
+ pass
+
+if DEBUG:
+ INTERNAL_IPS = ('127.0.0.1',)
+ INSTALLED_APPS += (
+  'debug_toolbar',
+ )
+ MIDDLEWARE += (
+  'debug_toolbar.middleware.DebugToolbarMiddleware',
+ )
