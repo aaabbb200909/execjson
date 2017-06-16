@@ -10,8 +10,8 @@ import time
 import os
 
 ###
-dryrun=True
-#dryrun=False
+#dryrun=True
+dryrun=False
 #
 generic_parse_list=["mkdir", "execshell", "editcron", "editat", "deletefile",
 "modifyuseros", "passwdresetos", "setpublickey"
