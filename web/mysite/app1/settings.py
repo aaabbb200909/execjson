@@ -56,9 +56,13 @@ jobs=[
  },
  {'jobname': _("addfirewallpolicy"),
   "args": [_("srcaddress"), _("srcnetmask"), _("destaddress"), _("destnetmask"), _("applicationname"), _("policy_then")]
+ },
+ {'jobname': _("setpublickey"),
+  "args": [_("server"), _("username"), _("password")]
  }
 ]
 
 operationswithseveralops=['mkdir','filetransfer','editcron','editat', 
- 'modifyuseros', 'passwdresetos', 'deletefile', "modifydns"
+ 'modifyuseros', 'passwdresetos', 'deletefile', "modifydns",
+ 'setpublickey'
 ]

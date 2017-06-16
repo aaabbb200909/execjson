@@ -1,6 +1,7 @@
 from fabric.api import *
-import os.path, time
-
+import os
+import os.path
+import time
 
 bkuptime=time.strftime("%Y%m%d-%H%M%S", time.localtime())
 
@@ -145,3 +146,11 @@ def modifyuseros(**js):
  else:
   raise Exception
 
+def setpublickey(**js):
+ env.user=js["username"]
+ env.password=js["password"]
+ publickey_text=os.popen('cat ~/.ssh/id_rsa.pub').read()
+ run ('mkdir .ssh')
+ run ('chmod 700 .ssh')
+ run ("echo '{0}' >> .ssh/authorized_keys".format(publickey_text))
+ run ("chmod 600 .ssh/authorized_keys")

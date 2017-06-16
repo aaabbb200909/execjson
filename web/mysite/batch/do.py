@@ -14,7 +14,7 @@ dryrun=True
 #dryrun=False
 #
 generic_parse_list=["mkdir", "execshell", "editcron", "editat", "deletefile",
-"modifyuseros", "passwdresetos"
+"modifyuseros", "passwdresetos", "setpublickey"
 ]
 ###
 finallyjobidlist=[] #global
